@@ -1,0 +1,39 @@
+# Copyright 2019 Hagbard Celine
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Hagbard-Celin ] cmake [ api=2 ]
+
+
+
+SUMMARY="Corsair AXi Series PSU monitoring and fan-control application "
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="amd64 ~x86"
+MYOPTIONS=""
+
+DEPENDENCIES=""
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+	-DCMAKE_INSTALL_BINDIR="/usr/$(exhost --target)/bin"
+	-DCMAKE_INSTALL_LIBDIR="/usr/$(exhost --target)/lib"
+)
+
+src_prepare() {
+        cmake_src_prepare
+}
+
+
+src_install() {
+    default
+    edo mv "${IMAGE}"/usr/$(exhost --target)/sbin "${IMAGE}"/usr/$(exhost --target)/bin
+    #edo rmdir "${IMAGE}"/usr/$(exhost --target)/sbin
+    edo mv "${IMAGE}"/lib64 "${IMAGE}"/usr/$(exhost --target)/lib
+    #edo rmdir "${IMAGE}"/lib64
+}   
+
+#src_install() {
+#        newbin "${WORKDIR}/cpsumon-9999_build/cpsumoncli"  cpsumoncli
+#		newlib.so "${WORKDIR}/cpsumon-9999_build/libcpsumon/libcpsumon.so"  libcpsumon.so
+#}
+
