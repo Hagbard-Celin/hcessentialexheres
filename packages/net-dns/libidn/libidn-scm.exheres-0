@@ -9,7 +9,7 @@ if ever is_scm ; then
     DOWNLOADS=""
     SCM_REPOSITORY="https://git.savannah.gnu.org/git/${PN}.git"
     require scm-git
-    require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.14 ] ]
+    require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
 fi
 
 SUMMARY="Internationalized Domain Names (IDN) implementation"
@@ -45,9 +45,9 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
     'doc gtk-doc'
 )
 
-src_prepare() {
-    autotools_src_prepare
-}
+#src_prepare() {
+#    autotools_src_prepare
+#}
 
 src_test() {
     esandbox allow_net "inet:127.0.0.1@80"
