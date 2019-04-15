@@ -22,7 +22,8 @@ DEPENDENCIES=""
 DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-static )
 
 src_prepare() {
+    esandbox disable_net
     edo ./autogen.sh
-
+    esandbox enable_net
     autotools_src_prepare
 }
