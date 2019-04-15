@@ -9,7 +9,7 @@ if ever is_scm ; then
     DOWNLOADS=""
     SCM_REPOSITORY="https://git.savannah.gnu.org/git/${PN}.git"
     require scm-git
-    require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 1.12 ] ]
+    require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.14 ] ]
 fi
 
 SUMMARY="Internationalized Domain Names (IDN) implementation"
