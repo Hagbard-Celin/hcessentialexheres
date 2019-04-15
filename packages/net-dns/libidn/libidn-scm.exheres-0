@@ -8,7 +8,7 @@ require gnu [ suffix=tar.gz ]
 if ever is_scm ; then
     DOWNLOADS=""
     SCM_REPOSOTORY="https://git.savannah.org/git/${PN}.git"
-    require scm_git
+    require scm-git
 fi
 
 SUMMARY="Internationalized Domain Names (IDN) implementation"
