@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require gnu [ suffix=tar.xz ]
+require autotools 
 
 if ever is_scm ; then
     DOWNLOADS=""
@@ -20,3 +21,8 @@ DEPENDENCIES=""
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-static )
 
+src_prepare() {
+    edo ./autogen.sh
+
+    autotools_src_prepare
+}
