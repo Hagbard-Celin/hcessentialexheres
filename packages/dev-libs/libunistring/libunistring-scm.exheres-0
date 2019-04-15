@@ -25,5 +25,5 @@ src_prepare() {
     esandbox disable_net
     edo ./autogen.sh
     esandbox enable_net
-    autotools_src_prepare
+#    autotools_src_prepare
 }
