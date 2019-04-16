@@ -26,7 +26,7 @@ DEPENDENCIES="
 
 DEFAULT_SRC_PREPARE_PATCHES=(
     "${FILES}"/${PNV}-test-escape-left-brace-in-a-regex-in-test-run.patch
-    "${FILES}"/${PN}-switch-back-to-syscall.patch
+    "${FILES}"/${PNV}-switch-back-to-syscall.patch
 )
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
