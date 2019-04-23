@@ -21,6 +21,7 @@ DEPENDENCIES="
 "
 DEFAULT_SRC_PREPARE_PATCHES=(
     "${FILES}/f2fs-tools-1.12.0-fsck.patch"
+    "${FILES}/fsck.f2fs_fix_to_repair_ro_mounted_device_w_-f.patch"
 )
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --disable-static
