@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/chronyd"
+command_args="${CHRONYD_OPTIONS}"
+pidfile="/run/chrony/chronyd.pid"
+
+depend() {
+    need net
+    need !ntpd
+    use logger
+}
+
