@@ -7,7 +7,7 @@ WANT_AUTOMAKE=none
 
 #inherit cron pam flag-o-matic user autotools versionator systemd
 require cron-install [ crond=cron crontab=fcrontab ] pam flag-o-matic autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 1.15 ] ] 
-require openrc-service [ openrc_confd_files=[ fcron ] ]
+require openrc-service [ openrc_confd_files=[ "${FILES}"/openrc/confd/ ] ]
 
 SUMMARY="A command scheduler with extended capabilities over cron and anacron"
 HOMEPAGE="http://fcron.free.fr/"
