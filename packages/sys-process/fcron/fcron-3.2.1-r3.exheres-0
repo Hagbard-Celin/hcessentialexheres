@@ -119,6 +119,11 @@ src_install() {
 		newins "${FILES}"/crontab.2 crontab
 	fi
 
+	exeinto /usr/$(exhost --target)/libexec
+	doexe fcron
+	exeopts -m 4710 -o ${rootuser} -g fcron
+	doexe fcronsighup
+
 	diropts -m 0750
 	keepdir /etc/cron.{hourly,daily,weekly,monthly}
 	diropts -m 0750 -o root -g cron
@@ -132,16 +137,9 @@ src_install() {
 	diropts -m 6770 -o cron -g fcron
 	keepdir /var/spool/fcron
 
-	exeinto /usr/$(exhost --target)/libexec
-	exeopts -m 4710 -o ${rootuser} -g fcron
-	doexe fcronsighup
-	exeopts -m 0750 -o root -g wheel
-	doexe fcron
-
-	dobin fcrondyn
-	exeopts -m 2755 -o root -g fcron
+	exeopts -m 2755 -o fcron -g fcron
 	exeinto /usr/$(exhost --target)/bin
-	doexe fcrontab
+	doexe fcrontab fcrondyn
 
 	diropts -m 0750 -o ${rootuser} -g fcron
 	dodir /etc/fcron
