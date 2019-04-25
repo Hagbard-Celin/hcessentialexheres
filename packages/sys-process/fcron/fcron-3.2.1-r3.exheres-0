@@ -176,7 +176,7 @@ src_install() {
 	#fperms 0750 /etc/fcron
 	#fperms 0640 /etc/fcron/fcron.{allow,deny,conf}
 
-	pamd_mimic_system system-services fcron auth account session
+	pamd_mimic_system fcron auth auth account session
 	cat > "${TEMP}"/fcrontab.pam <<- EOF
 	# Don't ask for the user's password; fcrontab will only allow to
 	# change user if running as root.
