@@ -134,7 +134,7 @@ src_install() {
 	keepdir /var/spool/cron/crontabs
 
 
-	diropts -m 6770 -o cron -g fcron
+	diropts -m 6770 -o fcron -g fcron
 	keepdir /var/spool/fcron
 
 	exeopts -m 2755 -o fcron -g fcron
