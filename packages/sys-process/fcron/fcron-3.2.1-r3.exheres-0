@@ -25,7 +25,9 @@ DEPENDENCIES="
 		selinux? ( sys-libs/libselinux:= )
 	build+run:
 		group/cron
+		group/fcron
 		user/cron
+		user/fcron
 		pam? ( sys-libs/pam:= )
 		mta? ( virtual/mta:= )
 "
@@ -78,8 +80,8 @@ src_configure() {
 		$(option_with readline) \
 		$(option_with selinux) \
 		--sysconfdir=/etc/fcron \
-		--with-username=cron \
-		--with-groupname=cron \
+		--with-username=fcron \
+		--with-groupname=fcron \
 		--with-piddir=/run \
 		--with-spooldir=/var/spool/fcron \
 		--with-fifodir=/run \
@@ -126,30 +128,30 @@ src_install() {
 	keepdir /var/spool/cron/crontabs
 
 
-	diropts -m 6770 -o cron -g cron
+	diropts -m 6770 -o cron -g fcron
 	keepdir /var/spool/fcron
 
 	exeinto /usr/$(exhost --target)/libexec
-	exeopts -m 4710 -o ${rootuser} -g cron
+	exeopts -m 4710 -o ${rootuser} -g fcron
 	doexe fcronsighup
 	exeopts -m 0750 -o root -g wheel
 	doexe fcron
 
 	dobin fcrondyn
-	exeopts -m 2755 -o root -g cron
+	exeopts -m 2755 -o root -g fcron
 	exeinto /usr/$(exhost --target)/bin
 	doexe fcrontab
 
-	diropts -m 0750 -o ${rootuser} -g cron
+	diropts -m 0750 -o ${rootuser} -g fcron
 	dodir /etc/fcron
 	insinto /etc/fcron
-	insopts -m 0640 -o ${rootuser} -g cron
+	insopts -m 0640 -o ${rootuser} -g fcron
 	doins files/fcron.{allow,deny,conf}
 
 	if option system-crontab; then
 		dosym fcrontab /usr/$(exhost --target)/bin/crontab
 
-		insopts -m 0640 -o ${rootuser} -g cron
+		insopts -m 0640 -o ${rootuser} -g fcron
 		insinto /etc/fcron
 		newins "${FILES}"/fcrontab.2 fcrontab
 
