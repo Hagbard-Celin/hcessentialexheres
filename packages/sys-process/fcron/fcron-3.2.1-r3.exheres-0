@@ -137,7 +137,7 @@ src_install() {
 	diropts -m 6770 -o fcron -g fcron
 	keepdir /var/spool/fcron
 
-	exeopts -m 6755 -o fcron -g fcron
+	exeopts -m 6775 -o fcron -g fcron
 	exeinto /usr/$(exhost --target)/bin
 	doexe fcrontab fcrondyn
 
