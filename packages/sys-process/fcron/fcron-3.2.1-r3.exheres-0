@@ -109,6 +109,7 @@ src_compile() {
 
 src_install() {
 	keepdir /etc/cron.d
+	install_openrc_files
 	
 	if option system-crontab; then
 		exeinto /usr/$(exhost --target)/libexec
@@ -191,7 +192,6 @@ src_install() {
 	EOF
 	newpamd "${TEMP}"/fcrontab.pam fcrontab
 
-	install_openrc_files
 	#newinitd "${FILES}"/fcron.init-r5 fcron
 	#systemd_newunit "${WORK}/script/fcron.init.systemd" fcron.service
 
