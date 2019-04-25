@@ -87,7 +87,7 @@ src_configure() {
 		--with-fifodir=/run \
 		--with-fcrondyn=yes \
 		--disable-checks \
-		--with-editor=/usr/libexec/editor \
+		--with-editor=/usr/bin/vim \
 		--with-shell=/bin/sh \
 		--without-db2man \
 		--without-dsssl-dir \
