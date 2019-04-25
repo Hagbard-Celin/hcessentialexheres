@@ -1,6 +1,6 @@
 # Copyright 2019 HC
 # Distributed under the terms of the GNU General Public License v2
-# Based in part upon 'fcron-3.2.1-r3.ebuild', which is:
+# Based in part upon 'fcron-3.2.1-r3.ebuild' from Gentoo, which is:
 # 	Copyright 1999-2018 Gentoo Foundation
 
 WANT_AUTOMAKE=none
@@ -58,7 +58,7 @@ src_prepare() {
 
 	edo mv configure.in configure.ac
 
-	edo cp "${FILESDIR}"/crontab.2 "${WORKBASE}"/crontab
+	edo cp "${FILES}"/crontab.2 "${WORKBASE}"/crontab
 
 	eautoconf
 }
@@ -222,7 +222,7 @@ pkg_postinst() {
 		# This is a new installation
 		elog "Make sure you execute"
 		elog ""
-		elog "  # emerge --config ${CATEGORY}/${PN}"
+		elog "  # cave config ${CATEGORY}/${PN}"
 		elog ""
 		elog "to install the default systab on this system."
 	else
@@ -234,7 +234,7 @@ pkg_postinst() {
 				elog "fcron's default systab was updated since your last installation."
 				elog "You can use"
 				elog ""
-				elog "  # emerge --config ${CATEGORY}/${PN}"
+				elog "  # cave config ${CATEGORY}/${PN}"
 				elog ""
 				elog "to re-install systab (do not call this command before you"
 				elog "have merged your configuration files)."
