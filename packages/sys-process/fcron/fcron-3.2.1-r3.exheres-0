@@ -178,9 +178,13 @@ src_install() {
 
 	
 	cat > "${TEMP}"/fcronpam <<- EOF
-	auth    include         system-services
-	account include         system-services
-	session include         system-services
+	auth            sufficient      pam_permit.so
+	account         include         system-auth
+	session         optional        pam_loginuid.so
+	session         required        pam_limits.so
+	session         required        pam_env.so
+	session         required        pam_unix.so
+	session         optional        pam_permit.so
 	EOF
 	newpamd "${TEMP}"/fcronpam fcron
 #	pamd_mimic_system fcron services auth account session
