@@ -10,6 +10,7 @@ MYOPTIONS="
     ( providers:
         vixie-cron
         cronie
+	fcron
     ) [[
         *description = [ cron daemon provider ]
         number-selected = at-least-one
@@ -19,5 +20,6 @@ MYOPTIONS="
 DEPENDENCIES="
     providers:vixie-cron? ( sys-process/vixie-cron )
     providers:cronie? ( sys-process/cronie )
+    providers:fcron? ( sys-process/fcron )
 "
 
