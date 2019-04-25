@@ -13,7 +13,8 @@ SUMMARY="A command scheduler with extended capabilities over cron and anacron"
 HOMEPAGE="http://fcron.free.fr/"
 DOWNLOADS="http://fcron.free.fr/archives/${PNV}.src.tar.gz"
 
-LICENSES="GPL-2"
+LICENCES="GPL-2"
+SLOT="0"
 PLATFORMS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 MYOPTIONS="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
