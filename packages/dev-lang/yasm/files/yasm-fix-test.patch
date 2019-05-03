@@ -1,0 +1,28 @@
+From 1ae12629b46bd92f6107c57dd7a956d305fd89c5 Mon Sep 17 00:00:00 2001
+From: "Erik M. Bray" <erik.bray@lri.fr>
+Date: Tue, 5 Sep 2017 09:09:24 +0000
+Subject: Force 'make -j1' when runnign the yasm test suite to avoid
+ non-deterministic failures
+
+---
+ build/pkgs/yasm/spkg-check | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/build/pkgs/yasm/spkg-check b/build/pkgs/yasm/spkg-check
+index 657381f..7f43d96 100644
+--- a/build/pkgs/yasm/spkg-check
++++ b/build/pkgs/yasm/spkg-check
+@@ -6,7 +6,9 @@ fi
+ 
+ cd src
+ 
+-$MAKE check
++# -j1 needed to avoid a possible race condition in the tests
++# see https://trac.sagemath.org/ticket/23217
++$MAKE -j1 check
+ if [ $? -ne 0 ]; then
+     echo >&2 "Error checking yasm."
+     exit 1
+-- 
+cgit v1.0-1-gd88e
+
