@@ -24,7 +24,6 @@ DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-static )
 src_prepare() {
     esandbox disable_net
     edo ./gitsub.sh pull
-    esandbox enable_net
     edo ./autogen.sh
-#    autotools_src_prepare
+    esandbox enable_net
 }
